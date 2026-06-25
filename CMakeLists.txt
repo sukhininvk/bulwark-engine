@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 4.2)
 project(Bulwark)
 
 add_subdirectory(src/engine)
-add_subdirectory(src/game)
 add_subdirectory(vendor/SDL)
 
 add_executable(Bulwark WIN32 src/engine/main.cpp

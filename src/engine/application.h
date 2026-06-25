@@ -21,7 +21,7 @@ namespace Bulwark {
         bool Initialize();
         void Shutdown();
         void ProcessEvents();
-        void Update(float deltaTime);
+        static void Update(float deltaTime);
         void Render();
 
         bool m_running = true;
