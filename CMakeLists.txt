@@ -4,11 +4,11 @@ project(Bulwark)
 add_subdirectory(src/engine)
 add_subdirectory(vendor/SDL)
 
-add_executable(Bulwark WIN32 src/engine/main.cpp
-        src/engine/application.h
-        src/engine/application.cpp
-        src/engine/window.h
-        src/engine/window.cpp)
+add_executable(Bulwark WIN32 src/main.cpp
+        src/application.h
+        src/application.cpp
+        src/window.h
+        src/window.cpp)
 
 target_compile_features(Bulwark PRIVATE cxx_std_20)
 
