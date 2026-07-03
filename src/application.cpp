@@ -1,4 +1,4 @@
-#include "application.h"
+#include "Bulwark/application.h"
 
 #include <SDL3/SDL_log.h>
 #include <SDL3/SDL_timer.h>
@@ -37,7 +37,7 @@ namespace Bulwark
 
     bool Application::Initialize()
     {
-        if (!SDL_Init(SDL_INIT_VIDEO))
+        if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD | SDL_INIT_SENSOR))
         {
             SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to initialize SDL: %s", SDL_GetError());
             return false;
@@ -81,6 +81,8 @@ namespace Bulwark
             {
                 m_running = false;
             }
+
+            Bulwark::Input::HandleEvent(event);
         }
     }
 
@@ -91,7 +93,6 @@ namespace Bulwark
 
     void Application::Render()
     {
-        SDL_SetRenderDrawColor(m_renderer, 24, 24, 24, 255);
         SDL_RenderClear(m_renderer);
         SDL_RenderPresent(m_renderer);
     }

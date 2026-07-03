@@ -1,6 +1,7 @@
 #ifndef BULWARK_APPLICATION_H
 #define BULWARK_APPLICATION_H
 
+#include "input.h"
 #include "window.h"
 
 #include <SDL3/SDL.h>
@@ -26,6 +27,7 @@ namespace Bulwark {
 
         bool m_running = true;
         Window m_window;
+        Input m_input;
         SDL_Renderer* m_renderer = nullptr;
     };
 }

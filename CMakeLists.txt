@@ -1,15 +1,26 @@
 cmake_minimum_required(VERSION 4.2)
-project(Bulwark)
+project(BulwarkEngine)
 
 add_subdirectory(src)
 add_subdirectory(vendor/SDL)
 
-add_executable(Bulwark WIN32 src/main.cpp
-        src/application.h
+add_library(bulwark SHARED
+        include/Bulwark/application.h
+        include/Bulwark/window.h
+        include/Bulwark/input.h
+
         src/application.cpp
-        src/window.h
-        src/window.cpp)
+        src/window.cpp
+        src/input.cpp
+)
 
-target_compile_features(Bulwark PRIVATE cxx_std_20)
+add_library(bulwark_entry OBJECT
+        entry/main.cpp
+)
 
-target_link_libraries(Bulwark PRIVATE SDL3::SDL3)
+target_compile_features(bulwark PRIVATE cxx_std_20)
+target_link_libraries(bulwark PUBLIC SDL3::SDL3)
+target_link_libraries(bulwark_entry PUBLIC bulwark)
+target_include_directories(bulwark PUBLIC include)
+
+set_target_properties(bulwark PROPERTIES PREFIX "")
