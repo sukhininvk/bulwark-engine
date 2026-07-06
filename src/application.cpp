@@ -1,4 +1,4 @@
-#include "Bulwark/application.h"
+#include "bulwark/application.h"
 
 #include <SDL3/SDL_log.h>
 #include <SDL3/SDL_timer.h>
@@ -43,7 +43,7 @@ namespace Bulwark
             return false;
         }
 
-        if (!m_window.Create("Bulwark", 800, 600))
+        if (!m_window.Create("Bulwark", 1280, 720))
         {
             SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to create window: %s", SDL_GetError());
             return false;
